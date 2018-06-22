@@ -19,7 +19,7 @@ module FeatureHelper
   # save screenshot
   def ss(mac_user, message = nil)
     file_name = ('a'..'z').to_a.shuffle[0,8].join
-    file_path = "/Users/#{mac_user}/Desktop/capybara/#{file_name}.jpg"
+    file_path = "/home/m/capybara/#{file_name}.jpg"
     puts message if message
     puts "saved screenshot to #{file_path}"
     save_screenshot(file_path)
@@ -53,7 +53,24 @@ module RoleHelper
   end
 end
 
+module DeviseRequestSpecHelpers
+
+  include Warden::Test::Helpers
+
+  def sign_in(user)
+    scope = Devise::Mapping.find_scope!(:user)
+    login_as(user, scope: scope)
+  end
+
+  def sign_out
+    scope = Devise::Mapping.find_scope!(:user)
+    logout(scope)
+  end
+
+end
+
 RSpec.configure do |config|
+  config.include DeviseRequestSpecHelpers, type: :request
   config.include AsyncHelper, type: :feature
   config.include FeatureHelper, type: :feature
   config.include RoleHelper

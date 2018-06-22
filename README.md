@@ -8,18 +8,18 @@ Ruby on Rails + Angular code template for Banana Coding
 2. Open Terminal
 3. Create a bare clone of the repository.
 ```
-git clone --bare git@github.com:BananaCoding/yellowprint.git
+git clone --bare git@github.com:BananaCoding/yellowprint
 ```
 4. Mirror-push to the new repository.
 ```
-cd yellowprint
+cd yellowprint.git
 git push --mirror git@github.com:BananaCoding/new-repository.git
 ```
 Where `new-repository` is the name of your new github repo.
 5. Remove template folder from your local machine.
 ```
 cd ..
-rm -rf yellowprint
+rm -rf yellowprint.git
 ```
 6. Clone new repo to your local machine.
 ```
@@ -38,16 +38,26 @@ rbenv install 2.5.0
 rbenv global 2.5.0
 ```
 - nodejs `brew install node`
+- yarn `brew install yarn`
 
 ### Setup project
 
 ##### Dev Machine
 
-1. create `config/application.yml` you can copy sample file from  `config/application.sample.yml`
-2. create `config/database.yml` you can copy sample file from  `config/database.sample.yml`
-3. run `bundle install`
-4. run `rake db:setup` to setup database
-5. start server with `rails s` command
+1. Mac user have to install Xcode command line tool first
+- xcode-select --install # Install Command Line Tools if you haven't already.
+- sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+2. install yarn https://yarnpkg.com/lang/en/docs/install
+3. install ruby 2.5.0(Windows: https://rubyinstaller.org/, Mac: https://github.com/rbenv/rbenv#homebrew-on-macos)
+4. clone code from YellowPrint repo "git clone git@github.com:BananaCoding/yellowprint.git"
+5. create config/application.yml you can copy sample config from config/application.sample.yml
+6. create config/database.yml you can copy sample config from config/database.sample.yml
+7. run "yarn install"
+8. run "gem install bundler"
+9. run "sudo bundle install"
+10. run "rake db:setup" to setup database
+11. start server with "rails s" command
+12. open "localhost:3000" on your web browser
 
 ##### Figaro: environment variables (ENV)
 We're using Figaro as a Rails app configuration, so please create your own 'config/application.yml' by running
@@ -86,3 +96,11 @@ Following are required variables
 ### Rails Admin
 
 You can enable rails admin by adding `rails_admin_path` variable into your application.yml file
+
+### Translation
+
+We are using i18n and i18n-js together, which means you can use ruby I18n translation on client side like this javascript code
+
+```
+I18n.t("KEY")
+```
