@@ -21,16 +21,10 @@ describe 'angular', js: true do
     expect(page).to have_content 'Seccond page'
   end
 
-  it 'can reset password' do
-    ss('m')
-    visit 'users/password/new'
-
-    fill_in 'Email', with: super_admin.email
-    expect(super_admin.reset_password_token).to be_nil
-    click_botton('Send me reset password instructions')
-    sleep 1
-
-    expect(super_admin.reset_password_token).to_not be_nil
+   it 'can go to third page' do
+    click_link 'Third'
+    expect(page).to have_content 'Third page'
   end
+
 
 end
