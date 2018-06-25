@@ -19,7 +19,7 @@ module FeatureHelper
   # save screenshot
   def ss(mac_user, message = nil)
     file_name = ('a'..'z').to_a.shuffle[0,8].join
-    file_path = "/Users/#{mac_user}/Desktop/capybara/#{file_name}.jpg"
+    file_path = "/home/m/capybara/#{file_name}.jpg"
     puts message if message
     puts "saved screenshot to #{file_path}"
     save_screenshot(file_path)

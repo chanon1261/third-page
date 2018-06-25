@@ -20,4 +20,11 @@ describe 'angular', js: true do
     click_link 'Second'
     expect(page).to have_content 'Seccond page'
   end
+
+   it 'can go to third page' do
+    click_link 'Third'
+    expect(page).to have_content 'Third page'
+  end
+
+
 end
